@@ -1,40 +1,32 @@
-package com.urban.Stepdefination;
+package com.urban.stepDefinitions;
 
 import com.urban.base.BaseClass;
 import com.urban.pageObject.BasePage;
-import com.urban.pageObject.HomePage;
 import com.urban.pageObject.ProductPage;
 import com.urban.pageObject.SearchresultPage;
 
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class AddToCart {
 	
-	HomePage home;
+
 	SearchresultPage results;
 	ProductPage product;
 	BasePage base;
 	String expectedName;
 	
-	@Given("the user is on the home page")
-	public void the_user_is_on_the_home_page() {
-	    // Write code here that turns the phrase above into concrete actions
-	    home = new HomePage(BaseClass.driver);
-	}
-
 	@When("the user searches for {string}")
 	public void the_user_searches_for(String string) {
 	    // Write code here that turns the phrase above into concrete actions
-	    home.searchField(string);
-	    home.clickSearchIcon();
+	    BaseStep.homePageObject.searchField(string);
+	    BaseStep.homePageObject.clickSearchIcon();
 	}
 
 	@When("clicks the first item and switches to new window")
 	public void clicks_the_first_item_and_switches_to_new_window() {
 	    // Write code here that turns the phrase above into concrete actions
-	    results = new SearchresultPage(BaseClass.driver);
+	    results = new SearchresultPage(BaseClass.getDriver());
 	    expectedName = results.getFirstItemName();
 		results.clickFirstItem();
 		results.switchWindow();
@@ -44,7 +36,7 @@ public class AddToCart {
 	public void adds_the_item_to_cart() {
 	    // Write code here that turns the phrase above into concrete actions
 		BasePage.popupHandle();
-		product = new ProductPage(BaseClass.driver);
+		product = new ProductPage(BaseClass.getDriver());
 		product.addToCart();
 	}
 

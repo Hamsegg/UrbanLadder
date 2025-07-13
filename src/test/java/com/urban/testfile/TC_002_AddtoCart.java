@@ -20,26 +20,27 @@ public class TC_002_AddtoCart extends BaseClass {
 	@Test()
 	public void searchAndAddToCartTest() {
 //        BasePage.popupHandle();
-		home = new HomePage(driver);
+		home = new HomePage(BaseClass.getDriver());
 		home.searchField("chair");
 		home.clickSearchIcon();
+		BaseClass.getLogger().info("clicked on search icon");
 
 //        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//ul[@class='search-results']/li//span[@class='name'])[1]")));
-		results = new SearchresultPage(driver);
+		results = new SearchresultPage(BaseClass.getDriver());
 		String expectedName = results.getFirstItemName();
 		results.clickFirstItem();
 
-		String parentWindow = driver.getWindowHandle();
-		Set<String> allWindows = driver.getWindowHandles();
+		String parentWindow = BaseClass.getDriver().getWindowHandle();
+		Set<String> allWindows = BaseClass.getDriver().getWindowHandles();
 		for (String win : allWindows) {
 			if (!win.equals(parentWindow)) {
-				driver.switchTo().window(win);
+				BaseClass.getDriver().switchTo().window(win);
 				break;
 			}
 		}
 
 		BasePage.popupHandle();
-		product = new ProductPage(driver);
+		product = new ProductPage(BaseClass.getDriver());
 		product.addToCart();
 		
 		System.out.println("reached cart");
