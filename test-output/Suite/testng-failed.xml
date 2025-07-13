@@ -4,13 +4,13 @@
   <test thread-count="5" name="Test(failed)">
     <parameter name="browser" value="chrome"/>
     <classes>
-      <class name="com.urban.testfile.TC_002_AddtoCart">
+      <class name="com.urban.testrunner.TestRunner">
         <methods>
-          <include name="searchAndAddToCartTest"/>
-          <include name="teardown"/>
-          <include name="setup"/>
+          <include name="setUpClass"/>
+          <include name="runScenario" invocation-numbers="0"/>
+          <include name="tearDownClass"/>
         </methods>
-      </class> <!-- com.urban.testfile.TC_002_AddtoCart -->
+      </class> <!-- com.urban.testrunner.TestRunner -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

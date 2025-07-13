@@ -12,6 +12,7 @@ public class HomePage extends BasePage {
 
 	@FindBy(xpath = "//input[@id='search']")
 	WebElement searchField;
+	
 	@FindBy(xpath = "//span[@class='search-icon icofont-search']")
 	WebElement searchIcon;
 
